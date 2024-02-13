@@ -7,6 +7,8 @@ import (
 	"gorm.io/gorm"
 )
 
+var DB *gorm.DB
+
 func Connect() {
 
 	dsn := "root:password@/goapp"
@@ -15,5 +17,7 @@ func Connect() {
 	if err != nil {
 		panic("could not connect to the database")
 	}
+
+	DB = database
 	database.AutoMigrate(&models.User{})
 }
